@@ -2,4 +2,4 @@
 Basic API
 
 ### Database design
-<img src="database-design.jpg" height="200" />
+<img src="database-design.png" height="200" />
