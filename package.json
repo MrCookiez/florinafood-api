@@ -1,31 +1,20 @@
 {
-  "name": "florinafood-api",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
-  "description": "complete node.js guide",
+  "description": "Complete Node.js Guide",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MrCookiez/florinafood-api.git"
-  },
-  "keywords": [
-    "node",
-    "js"
-  ],
-  "author": "Theodoros Vragkos",
+  "author": "Maximilian Schwarzmüller",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MrCookiez/florinafood-api/issues"
-  },
-  "homepage": "https://github.com/MrCookiez/florinafood-api#readme",
   "devDependencies": {
-    "nodemod": "^2.6.1"
+    "nodemon": "^1.18.3"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
   }
 }
