@@ -1,34 +1,10 @@
 const { validationResult } = require('express-validator');
+const Post = require('../models/post');
 
 exports.getPosts = (req, res, next) => {
-    res.status(200).json({
-        posts: [
-            {
-                id: '1',
-                title: 'title',
-                author: 'Theodoros Vragkos',
-                content: {
-                    text: 'first post - Lorem ipsum dolor amet',
-                    image: 'https://i.picsum.photos/id/13/200/300.jpg',
-                    links: {
-                        source: 'http://teovragkos.com'
-                    },
-                },
-            },
-            {
-                id: '2',
-                title: 'Header 2',
-                author: 'Theodoros Vragkos',
-                content: {
-                    text: 'first post - Lorem ipsum dolor amet',
-                    image: 'https://i.picsum.photos/id/13/200/300.jpg',
-                    links: {
-                        source: 'http://teovragkos.com'
-                    },
-                },
-            }
-        ]
-    });
+    Post.findAll()
+    .then(posts => res.send(posts).status(201))
+    .catch(err => console.log(err));
 };
 
 exports.createPost = (req, res, next) => {
@@ -41,18 +17,16 @@ exports.createPost = (req, res, next) => {
         });
     }
 
-    const title = req.body.title;
-    const text = req.body.text;
-    const author = req.body.author;
-
-    // Create post in db
-    res.status(201).json({
-        message: 'Post was created!',
-        post: {
-            id: new Date().toISOString(),
-            title: title,
-            text: text,
-            author: author
-        }
-    });
+    Post.create({
+        title: req.body.title,
+        text: req.body.text,
+        author: req.body.author,
+        createdAt: new Date().toISOString(),
+    })
+        .then(result => {
+            console.log(result);
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };
