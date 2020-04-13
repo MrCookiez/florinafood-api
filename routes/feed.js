@@ -8,7 +8,10 @@ const router = express.Router();
 // GET /feed/posts
 router.get('/posts', feedController.getPosts);
 
-// POST /feed/post
+// GET single post - /feed/post
+router.get('/post/:id', feedController.getPost);
+
+// POST single post - /feed/post
 router.post('/post', [
     body('title').trim().isLength({ min: 5 }),
     body('text').trim().isLength({ min: 5 }),
