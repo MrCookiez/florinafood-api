@@ -32,7 +32,7 @@ exports.createPost = (req, res, next) => {
         createdAt: new Date().toISOString(),
     })
         .then(result => {
-            res.redirect('/blog');
+            res.send(result);
         })
         .catch(err => {
             console.log(err);
