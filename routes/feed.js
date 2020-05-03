@@ -21,5 +21,6 @@ router.get('/post/:id', feedController.getPost);
 router.post('/post/:id', feedController.updatePost);
 
 // Delete single post
+router.delete('/post/:id', feedController.deletePost);
 
 module.exports = router;

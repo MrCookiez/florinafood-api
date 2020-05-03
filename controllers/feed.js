@@ -56,31 +56,16 @@ exports.updatePost = (req, res, next) => {
             post.author = updatedAuthor;
             return post.save();
         })
-        .then(result => res.status(201).send(result))
+        .then(result => res.status(201).send({ message: 'Post updated successfully', result}))
         .catch(err => console.log(err));
 };
 
 // Delete single post by id
+exports.deletePost = (req, res, next) => {
+    const postId = req.body.id;
 
-
-
-
-// exports.postEditPost = (req, res, next) => {
-//     const postId = req.body.id;
-//     const updatedTitle = req.body.title;
-//     const updatedText = req.body.text;
-//     const updatedAuthor = req.body.title;
-
-//     Post.findByPk(postId)
-//         .then(post => {
-//             post.title = updatedTitle;
-//             post.text = updatedText;
-//             post.author = updatedAuthor;
-//             return post.save();
-//         })
-//         .then(result => {
-//             console.log('UPDATED PRODUCT', result);
-//             redirect('/blog')
-//         })
-//         .catch(err => console.log(err));
-// };
+    Post.findByPk(postId)
+    .then(post => post.destroy())
+    .then(result => res.send({ message: 'Post deleted successfully!' }))
+    .catch(err => console.log(err));
+};
