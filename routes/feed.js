@@ -5,16 +5,21 @@ const feedController = require('../controllers/feed');
 
 const router = express.Router();
 
-// GET /feed/posts
-router.get('/posts', feedController.getPosts);
-
-// GET single post - /feed/post
-router.get('/post/:id', feedController.getPost);
-
-// POST single post - /feed/post
+// Create a post - /feed/post
 router.post('/post', [
     body('title').trim().isLength({ min: 5 }),
     body('text').trim().isLength({ min: 5 }),
 ], feedController.createPost);
+
+// Retrieve all posts
+router.get('/posts', feedController.getPosts);
+
+// Retrieve single post
+router.get('/post/:id', feedController.getPost);
+
+// Update single post
+router.post('/post/:id', feedController.updatePost);
+
+// Delete single post
 
 module.exports = router;

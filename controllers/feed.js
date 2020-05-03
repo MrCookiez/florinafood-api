@@ -1,20 +1,7 @@
 const { validationResult } = require('express-validator');
 const Post = require('../models/post');
 
-exports.getPost = (req, res, next) => {
-    const postId = req.params.id;
-
-    Post.findByPk(postId)
-    .then(post => res.send(post).status(201))
-    .catch(err => console.log(err));
-};
-
-exports.getPosts = (req, res, next) => {
-    Post.findAll()
-    .then(posts => res.send(posts).status(201))
-    .catch(err => console.log(err));
-};
-
+// Create a single post
 exports.createPost = (req, res, next) => {
     const errors = validationResult(req);
 
@@ -38,3 +25,62 @@ exports.createPost = (req, res, next) => {
             console.log(err);
         });
 };
+
+// Retrieve all posts
+exports.getPosts = (req, res, next) => {
+    Post.findAll()
+    .then(posts => res.send(posts).status(201))
+    .catch(err => console.log(err));
+};
+
+// Get single post
+exports.getPost = (req, res, next) => {
+    const postId = req.params.id;
+
+    Post.findByPk(postId)
+    .then(post => res.send(post).status(201))
+    .catch(err => console.log(err));
+};
+
+// Update single post by id
+exports.updatePost = (req, res, next) => {
+    const postId = req.body.id;
+    const updatedTitle = req.body.title;
+    const updatedText = req.body.text;
+    const updatedAuthor = req.body.author;
+
+    Post.findByPk(postId)
+        .then(post => {
+            post.title = updatedTitle;
+            post.text = updatedText;
+            post.author = updatedAuthor;
+            return post.save();
+        })
+        .then(result => res.status(201).send(result))
+        .catch(err => console.log(err));
+};
+
+// Delete single post by id
+
+
+
+
+// exports.postEditPost = (req, res, next) => {
+//     const postId = req.body.id;
+//     const updatedTitle = req.body.title;
+//     const updatedText = req.body.text;
+//     const updatedAuthor = req.body.title;
+
+//     Post.findByPk(postId)
+//         .then(post => {
+//             post.title = updatedTitle;
+//             post.text = updatedText;
+//             post.author = updatedAuthor;
+//             return post.save();
+//         })
+//         .then(result => {
+//             console.log('UPDATED PRODUCT', result);
+//             redirect('/blog')
+//         })
+//         .catch(err => console.log(err));
+// };
