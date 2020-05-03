@@ -1,5 +1,5 @@
 # florinafood-api
-Basic API
+Main API
 
 ### Database design
 
