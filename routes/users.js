@@ -8,13 +8,13 @@ const router = express.Router();
 router.post('/users', usersController.createUser);
 
 // Retrieve all users
-router.get('/users', feedController.getUsers);
+router.get('/users', usersController.getUsers);
 
 // Retrieve single user
-router.get('/user/:id', feedController.getUser);
+router.get('/user/:id', usersController.getUser);
 
 // Update single user
-router.post('/user/:id', feedController.updateUser);
+router.post('/user/:id', usersController.updateUser);
 
 // Delete single user
 router.delete('/user/:id', feedController.deleteUser);
