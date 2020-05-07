@@ -1,12 +1,16 @@
 const Sequelize = require('sequelize');
+const env = require('../env');
 
 const sequelize = new Sequelize(
-    'nodemysql',
-    'root',
-    'test',
+    env.DATABASE_NAME,
+    env.DATABASE_USERNAME,
+    env.DATABASE_PASSWORD,
     {
-        dialect: 'mysql',
-        host: 'localhost'
+        host: env.DATABASE_HOST,
+        dialect: env.DATABASE_DIALECT,
+        define: {
+            underscored: true
+        }
     }
 );
 

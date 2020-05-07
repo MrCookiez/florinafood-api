@@ -1,13 +1,12 @@
 const Sequelize = require('sequelize');
-
 const sequelize = require('../config/db');
 
 const User = sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false
     },
     first_name: Sequelize.STRING,
     last_name: Sequelize.STRING,
@@ -25,20 +24,18 @@ const User = sequelize.define('user', {
       allowNull: false,
     },
     address_number: {
-      type: Sequelize.NUMBER,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     door_bell_name: {
-      type: Sequelize.NUMBER,
-      allowNull: true,
+      type: Sequelize.STRING,
     },
     floor: {
-      type: Sequelize.NUMBER,
-      allowNull: true,
+      type: Sequelize.STRING,
     },
-    post_code: Sequelize.NUMBER,
+    post_code: Sequelize.STRING,
     phone_number: {
-      type: Sequelize.NUMBER,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     createdAt: Sequelize.DATE,

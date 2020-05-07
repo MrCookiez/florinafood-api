@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-
 const sequelize = require('../config/db');
 
 const Role = sequelize.define('role', {
@@ -20,7 +19,7 @@ const Role = sequelize.define('role', {
     type: Sequelize.STRING,
   },
   phone_number: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.STRING,
   }
 });
 
