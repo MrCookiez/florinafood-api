@@ -4,7 +4,7 @@
   "description": "complete node.js guide",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "node app.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/MrCookiez/florinafood-api#readme",
   "devDependencies": {
+    "jest": "^26.0.1",
     "nodemod": "^2.6.1"
   },
   "dependencies": {
